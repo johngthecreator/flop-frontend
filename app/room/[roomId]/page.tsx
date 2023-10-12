@@ -6,9 +6,6 @@ import { AiOutlineCloudDownload, AiOutlineSend } from "react-icons/ai";
 
 export default function RoomId({ params }: { params: { roomId: string } }){
     const id = params.roomId
-    if (!process.env.NEXT_PUBLIC_API_URL)return;
-    const socket = io(process.env.NEXT_PUBLIC_API_URL)
-
     const [selectedFile, setSelectedFile] = useState<File|null>(null);
     // const [b64, setb64] = useState<ArrayBuffer | string | null>(null);
     const [b64, setb64] = useState<any>(null);
@@ -16,6 +13,9 @@ export default function RoomId({ params }: { params: { roomId: string } }){
     useEffect(()=>{
       getBase64();
     },[selectedFile])
+    if (!process.env.NEXT_PUBLIC_API_URL)return;
+    const socket = io(process.env.NEXT_PUBLIC_API_URL)
+
 
     socket.emit("joinRoom", params.roomId)
     socket.on('connect',()=>{console.log("user connected")})
@@ -64,7 +64,7 @@ export default function RoomId({ params }: { params: { roomId: string } }){
 
     return(
         <main className="flex w-screen h-full flex-col items-center justify-between p-24">
-            <h1 className="text-[50px] font-black">Welcome to {params.roomId}'s Room</h1>
+            <h1 className="text-[50px] font-black">Welcome to {params.roomId}&apos;s Room</h1>
             <div className="flex flex-col justify-center text-center m-5">
                 <h2>Select a file to get started... or just wait...</h2>
                 <div className="flex justify-between border-solid border-white border-2 rounded-lg p-4 m-2 ">

@@ -6,7 +6,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col items-center justify-between p-24 overflow-hidden">
       <div className='text-center z-10'>
         <h1 className='text-[75px] font-bold'>Say hello to <span className='font-black underline'>flop.</span></h1>
-        <p className='text-2xl'>The open-source file sharing platform you didn't needed</p>
+        <p className='text-2xl'>The open-source file sharing platform you didn&apos;t needed</p>
       </div>
       <RandomCircle top="150" left="400"/>
       <RandomCircle top="600" left="400"/>
