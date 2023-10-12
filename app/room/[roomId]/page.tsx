@@ -1,8 +1,10 @@
 "use client";
 import { io } from "socket.io-client";
 import { useEffect } from "react";
+
 export default function RoomId({ params }: { params: { roomId: string } }){
-    const socket = io(process.env.PROD_URL || "http://localhost:8080")
+    if (!process.env.NEXT_PUBLIC_API_URL)return;
+    const socket = io(process.env.NEXT_PUBLIC_API_URL)
 
     useEffect(()=>{
         socket.emit("joinRoom", params.roomId)
